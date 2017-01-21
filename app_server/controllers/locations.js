@@ -31,10 +31,54 @@ module.exports.homeList = function (req, res) {
 
 /* Get 'Location Info' page */
 module.exports.locationInfo = function (req, res) {
-  res.render('location-info', { title: 'Location info' });
+  res.render('location-info', {
+      title: 'Starcups',
+      pageHeader: {
+          title: 'Starcups'
+      },
+      sidebar: {
+          context: 'is on Loc8r because it has accessible wifi and space to sitdown with your laptop and get some work done.',
+          callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like you.'
+      },
+      location: {
+          name: 'Starcups',
+          address: '123 Main Street, Anytown, US 12345',
+          rating: 3,
+          facilities: ['Hot drinks', 'Food', 'Premium Wifi'],
+          coords: {lat: 44.9778, lng: 93.2650},
+          openingTimes: [{
+              days: 'Monday - Friday',
+              opening: '7:00am',
+              closing: '7:00pm',
+              closed: false
+          },{
+              days: 'Saturday',
+              opening: '8:00am',
+              closing: '5:00pm',
+              closed: false
+          },{
+              days: 'Sunday',
+              closed: true
+          }],
+          reviews: [{
+              author: 'Jill Jones',
+              rating: 5,
+              timestamp: '17 June 2016',
+              reviewText: 'What a great place. The best!'
+          },{
+              author: 'Bill Berditzman',
+              rating: 3,
+              timestamp: '2 August 2016',
+              reviewText: 'Fast wifi but so-so coffee and food was not that good'
+          }]
+      }
+  });
 };
 
 /* Get 'Add review' page */
 module.exports.addReview = function (req, res) {
-  res.render('location-review-form', { title: 'Add review' });
+  res.render('location-review-form', {
+      title: 'Review Starcups on Loc8r',
+      pageHeader: { title: 'Review Starcups' }
+  });
 };
